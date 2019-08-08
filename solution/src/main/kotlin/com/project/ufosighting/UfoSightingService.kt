@@ -12,6 +12,10 @@ class UfoSightingService(private val ufoSightingRepository: UfoSightingRepositor
     fun uniqueShapeCount(): CountUfoSighting {
         return CountUfoSighting(ufoSightingRepository.uniqueShapeCount())
     }
+
+    fun vulnerableCity(count: Int): List<CityCount> {
+        return ufoSightingRepository.vulnerableCity(count)
+    }
 }
 
 data class CountUfoSighting(
