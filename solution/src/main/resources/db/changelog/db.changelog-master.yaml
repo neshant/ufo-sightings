@@ -49,6 +49,7 @@ databaseChangeLog:
               type: double
               constraints:
                 nullable: false
+
   - changeSet:
       id: 2
       author: neshant.sharma
@@ -58,3 +59,14 @@ databaseChangeLog:
           tableName: ufo_sighting
           primaryKey: id
           file: db/data/ufo-sighting.csv
+
+  - changeSet:
+      id: 3
+      author: neshant.sharma
+      changes:
+        - sql:
+            dbms: postgresql
+            sql: CREATE EXTENSION IF NOT EXISTS cube
+        - sql:
+            dbms: postgresql
+            sql: CREATE EXTENSION IF NOT EXISTS earthdistance

@@ -16,6 +16,10 @@ class UfoSightingService(private val ufoSightingRepository: UfoSightingRepositor
     fun vulnerableCity(count: Int): List<CityCount> {
         return ufoSightingRepository.vulnerableCity(count)
     }
+
+    fun closestSightings(latitude: Double, longitude: Double, cnt: Int): List<Sightings> {
+        return ufoSightingRepository.closestSightings(latitude, longitude, cnt)
+    }
 }
 
 data class CountUfoSighting(
