@@ -21,7 +21,7 @@ class UfoSightingController(private val ufoSightingService: UfoSightingService) 
     }
 
     @GetMapping("/vulnerable-city")
-    fun vulnerableCity(@RequestParam("count") count: Int): ResponseEntity<List<CityCount>> {
+    fun vulnerableCity(@RequestParam("count") count: Int): ResponseEntity<CitySightings> {
         return ResponseEntity.ok(ufoSightingService.vulnerableCity(count))
     }
 
@@ -30,7 +30,7 @@ class UfoSightingController(private val ufoSightingService: UfoSightingService) 
             @RequestParam("latitude") latitude: Double,
             @RequestParam("longitude") longitude: Double,
             @RequestParam("count") count: Int
-    ): ResponseEntity<List<Sightings>> {
+    ): ResponseEntity<SightingDistance> {
         return ResponseEntity.ok(ufoSightingService.closestSightings(latitude, longitude, count))
     }
 }

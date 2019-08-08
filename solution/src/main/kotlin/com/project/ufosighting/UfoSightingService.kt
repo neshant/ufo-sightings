@@ -13,15 +13,17 @@ class UfoSightingService(private val ufoSightingRepository: UfoSightingRepositor
         return CountUfoSighting(ufoSightingRepository.uniqueShapeCount())
     }
 
-    fun vulnerableCity(count: Int): List<CityCount> {
-        return ufoSightingRepository.vulnerableCity(count)
+    fun vulnerableCity(count: Int): CitySightings {
+        return CitySightings(ufoSightingRepository.vulnerableCity(count))
     }
 
-    fun closestSightings(latitude: Double, longitude: Double, cnt: Int): List<Sightings> {
-        return ufoSightingRepository.closestSightings(latitude, longitude, cnt)
+    fun closestSightings(latitude: Double, longitude: Double, cnt: Int): SightingDistance {
+        return SightingDistance(ufoSightingRepository.closestSightings(latitude, longitude, cnt))
     }
 }
 
-data class CountUfoSighting(
-        val count: Long?
-)
+data class CountUfoSighting(val count: Long?)
+
+data class CitySightings(val sightings: List<CityCount>)
+
+data class SightingDistance(val sightings: List<Sightings>)
