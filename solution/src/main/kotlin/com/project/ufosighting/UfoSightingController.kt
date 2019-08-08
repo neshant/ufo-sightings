@@ -13,4 +13,9 @@ class UfoSightingController(private val ufoSightingService: UfoSightingService) 
     fun countSightings(): ResponseEntity<CountUfoSighting> {
         return ResponseEntity.ok(ufoSightingService.countSightings())
     }
+
+    @GetMapping("/unique-shape")
+    fun uniqueShapeCount(): ResponseEntity<CountUfoSighting> {
+        return ResponseEntity.ok(ufoSightingService.uniqueShapeCount())
+    }
 }
