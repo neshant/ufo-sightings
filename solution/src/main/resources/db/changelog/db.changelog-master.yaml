@@ -1,0 +1,72 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: neshant.sharma
+      changes:
+      - createTable:
+          tableName: ufo_sighting
+          columns:
+          - column:
+              name: id
+              type: varchar(255)
+              constraints:
+                nullable: false
+                primaryKey: true
+          - column:
+              name: occurred_at
+              type: varchar(255)
+          - column:
+              name: city
+              type: varchar(255)
+          - column:
+              name: state
+              type: varchar(255)
+          - column:
+              name: country
+              type: varchar(255)
+          - column:
+              name: shape
+              type: varchar(255)
+          - column:
+              name: duration_seconds
+              type: varchar(255)
+          - column:
+              name: duration_text
+              type: varchar(255)
+          - column:
+              name: description
+              type: text
+          - column:
+              name: reported_on
+              type: varchar(255)
+          - column:
+              name: latitude
+              type: double
+              constraints:
+                nullable: false
+          - column:
+              name: longitude
+              type: double
+              constraints:
+                nullable: false
+
+  - changeSet:
+      id: 2
+      author: neshant.sharma
+      runOnChange: true
+      changes:
+      - loadUpdateData:
+          tableName: ufo_sighting
+          primaryKey: id
+          file: db/data/ufo-sighting.csv
+
+  - changeSet:
+      id: 3
+      author: neshant.sharma
+      changes:
+        - sql:
+            dbms: postgresql
+            sql: CREATE EXTENSION IF NOT EXISTS cube
+        - sql:
+            dbms: postgresql
+            sql: CREATE EXTENSION IF NOT EXISTS earthdistance
