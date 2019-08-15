@@ -20,6 +20,31 @@ class UfoSightingService(private val ufoSightingRepository: UfoSightingRepositor
     fun closestSightings(latitude: Double, longitude: Double, cnt: Int): SightingDistance {
         return SightingDistance(ufoSightingRepository.closestSightings(latitude, longitude, cnt))
     }
+
+    fun createUfoSighting(ufoSighting: UfoSighting): UfoSighting {
+        return ufoSightingRepository.save(ufoSighting)
+    }
+
+    fun updateUfoSighting(id: Long, ufoSighting: UfoSighting): UfoSighting? {
+        return sightingExists(id).let {
+            ufoSightingRepository.save(ufoSighting.copy(id = it.id, deleted = it.deleted))
+        }
+    }
+
+    fun deleteUfoSighting(id: Long) {
+        sightingExists(id).let {
+            ufoSightingRepository.save(it.copy(deleted = true))
+        }
+    }
+
+    fun sightingExists(id: Long): UfoSighting {
+        return ufoSightingRepository.findById(id)
+                .orElseThrow { ResourceNotFound() }
+    }
+
+    fun getUfoSightingById(id: Long): UfoSighting {
+        return sightingExists(id)
+    }
 }
 
 data class CountUfoSighting(val count: Long?)
