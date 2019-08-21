@@ -197,6 +197,79 @@ curl -X GET   0.01s user 0.01s system 1% cpu 1.486 total
 jq .  0.08s user 0.00s system 5% cpu 1.487 total
 ```
 
+
+5) successful potential hits within 120 Kms and greater than 42 seconds?
+
+```
+bash-3.2$ curl -X GET 'http://localhost:8080/ufo-sightings/successful-hits' |jq .
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   455    0   455    0     0    277      0 --:--:--  0:00:01 --:--:--   277
+{
+  "targets": [
+    {
+      "count": 19,
+      "shape": "light"
+    },
+    {
+      "count": 7,
+      "shape": "triangle"
+    },
+    {
+      "count": 5,
+      "shape": "circle"
+    },
+    {
+      "count": 5,
+      "shape": "disk"
+    },
+    {
+      "count": 4,
+      "shape": "other"
+    },
+    {
+      "count": 3,
+      "shape": "fireball"
+    },
+    {
+      "count": 3,
+      "shape": "diamond"
+    },
+    {
+      "count": 3,
+      "shape": "unknown"
+    },
+    {
+      "count": 2,
+      "shape": "sphere"
+    },
+    {
+      "count": 2,
+      "shape": "formation"
+    },
+    {
+      "count": 1,
+      "shape": "cigar"
+    },
+    {
+      "count": 1,
+      "shape": "oval"
+    },
+    {
+      "count": 1,
+      "shape": "rectangle"
+    },
+    {
+      "count": 1,
+      "shape": "flash"
+    },
+    {
+      "count": 1,
+      "shape": "changing"
+    }
+  ]
+}
+```
 ## Ambiguity Notes
 
 {Add notes here if you were unsure about any questions and what specific implementation choices were made.}
