@@ -29,7 +29,7 @@ databaseChangeLog:
                 type: varchar(255)
             - column:
                 name: duration_seconds
-                type: varchar(255)
+                type: float
             - column:
                 name: duration_text
                 type: varchar(255)

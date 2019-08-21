@@ -34,6 +34,23 @@ interface UfoSightingRepository : CrudRepository<UfoSighting, Long> {
             @Param("lng") lng: Double,
             @Param("cnt") cnt: Int
     ): List<Sightings>
+
+    @Query(
+            """
+                SELECT shape,count(shape)
+                FROM ufo_sighting
+                WHERE duration_seconds > 42
+                AND earth_distance(ll_to_earth(latitude, longitude), ll_to_earth(46.5476, -87.3956)) / 1000 < 120
+                GROUP BY shape
+                ORDER BY count(shape) desc ;
+                 """, nativeQuery = true
+    )
+    fun successFulPotentialHits(): List<NearSightingShapeCount>
+}
+
+interface NearSightingShapeCount {
+    val shape: String
+    val count: Int
 }
 
 interface CityCount {

@@ -65,4 +65,10 @@ class UfoSightingController(private val ufoSightingService: UfoSightingService) 
         ufoSightingService.deleteUfoSighting(id)
         return ResponseEntity.noContent().build()
     }
+
+    // This API was added onsite where the interviewers said nothing needs to be parametrized
+    @GetMapping("successful-hits")
+    fun successFulPotentialHits(): ResponseEntity<SuccessFulTargets> {
+        return ResponseEntity.ok(ufoSightingService.successFulPotentialHits())
+    }
 }

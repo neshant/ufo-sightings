@@ -45,7 +45,13 @@ class UfoSightingService(private val ufoSightingRepository: UfoSightingRepositor
     fun getUfoSightingById(id: Long): UfoSighting {
         return sightingExists(id)
     }
+
+    fun successFulPotentialHits(): SuccessFulTargets {
+        return SuccessFulTargets(ufoSightingRepository.successFulPotentialHits())
+    }
 }
+
+data class SuccessFulTargets(val targets: List<NearSightingShapeCount>)
 
 data class CountUfoSighting(val count: Long?)
 

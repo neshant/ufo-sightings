@@ -21,7 +21,7 @@ data class UfoSighting(
         val state: String?,
         val country: String?,
         val shape: String?,
-        val duration_seconds: String?,
+        val duration_seconds: Float?,
         val duration_text: String?,
         val description: String?,
         val reported_on: String?,
